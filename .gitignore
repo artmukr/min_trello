@@ -42,3 +42,7 @@ pip-selfcheck.json
 *.iml
 out
 gen
+
+utils/__pycache__/
+views/__pycache__/
+__pycache__/

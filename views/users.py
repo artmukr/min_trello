@@ -1,6 +1,6 @@
 from flask import request
 from flask_restful import Resource
-from models import User, serialize_multiple
+from models import User, serialize_multiple, Task
 from settings import db
 from utils.validator import ModelValidator
 
@@ -29,3 +29,9 @@ class ConcreteUser(Resource):
 		db.session.commit()
 		return 200
 
+
+class UserToTask(Resource):
+	def post(self, user_id, task_id):
+		user = User.query.get(user_id)
+		task = Task.query.get(task_id)
+		return ModelValidator.validate_user(user, task)
